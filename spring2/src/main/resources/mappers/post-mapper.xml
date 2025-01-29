@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itwill.spring2.repository.PostDao"> <!--패키지가 포함된 dao인터페이스 주소 넣기. PostDao를 인터페이스로 만들기.. -->
+    <!-- 영속성 프레임워크 MyBatis에서 실행할 SQL 문장들을 선언하는 파일 -->
+    
+    <!-- 포스트 목록 보기(<select>)에서 사용할 메서드 이름과 SQL 문장 -->
+    <select id="selectOrderByIdDesc" resultType="Post"> <!-- post-mapper.xml에서 별명으로 정의한 Post --><!-- <select>는 resultType는 무조건 지정해줘야함 -->
+        select * from posts order by id desc
+    </select>
+    
+    <!-- 포스트 상세보기(<select>)에서 사용할 메서드 이름과 SQL 문장 -->
+    <select id="selectById" resultType="Post"> <!-- post-mapper.xml에서 별명으로 정의한 Post -->
+        select * from posts where id = #{id} <!-- MyBatis에서 bindingParameter : ?가 아니라 #{selectById메서드의 paramater이름}로 --><!-- <select>는 resultType는 무조건 지정해줘야함 -->
+    </select>
+    
+    <!-- 포스트 새글 작성(<insert>)에서 사용할 메서드 이름과 SQL 문장 -->
+    <insert id="insertPost"><!-- id = 메서드 이름(insertPost) -->
+        insert into posts (title, content, author, created_time, modified_time) values (#{title}, #{content}, #{author}, systimestamp, systimestamp)
+    </insert>
+    
+    <!-- 포스트 업데이트(수정하기)에서 사용할 메서드 이름과 SQL 문장 -->
+    <update id="updatePost">
+        update posts set title = #{title}, content = #{content}, modified_time = systimestamp where id = #{id}
+    </update>
+    
+    <!-- 포스트 삭제하기에서 사용할 메서드 이름과 SQL 문장 -->
+    <delete id="deletePost">
+        delete from posts where id = #{id}
+    </delete>
+    
+    <!-- Dynamic SQL -->
+    <!-- 포스트 검색(카테고리와 키워드)에서 사용할 메서드 이름과 SQL 문장 -->
+    <select id="search" resultType="Post"><!-- <select>는 resultType는 무조건 지정해줘야함 -->
+        <bind name="searchKeyword" value="'%' + keyword + '%'"/> <!--name = 변수 이름, value = 변수 값 --><!-- List<Post> search(PostSearchDto dto)가 아규먼트가 PostSearchDto고, 그 PostSearchDto의 필드를 keyword로 선언했기 때문에 value에 keyword 단어를 사용 -->
+        select * from posts
+        <where>
+            <choose>
+                <when test='category.equals("t")'> <!-- 속성의 값을 지정할 때는 ''나 "" 둘다 가능, equals의 아규먼트는 문자열이여야하니까 ""로 -->
+                    upper(title) like upper(#{searchKeyword})
+                </when>
+                <when test='category.equals("c")'>
+                    upper(content) like upper(#{searchKeyword}) <!-- ? 대신 #{} -->
+                </when>
+                <when test='category.equals("tc")'> 
+                    upper(title) like upper(#{searchKeyword})
+                    or
+                    upper(content) like upper(#{searchKeyword})
+                </when>
+                <when test='category.equals("a")'>
+                    upper(author) like upper (#{searchKeyword})
+                </when>
+            </choose>
+        </where>
+        order by id desc
+    </select>
+</mapper>
+  
+  
+<!-- https://mybatis.org/mybatis-3/getting-started.html에서 <!DOCTYPE mapper를 복붙하고 작업 -->
+<!-- MyBatis에서 PostDao클래스(인터페이스)에서 selectOrderByIdDesc메서드를 만들어 메서드에 select하는 기능(sql)을 넣어줌 -->

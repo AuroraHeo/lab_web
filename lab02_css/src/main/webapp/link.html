@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Lab02 CSS</title>
+		
+		<style>
+		  div {
+		      margin-top: 16px;
+		  }
+		  
+		  /*
+		      - pseudo selector(가상 선택자): 이벤트 또는 특정 조건을 만족하는 요소(들)을 찾는 방법.
+		      - (문법) selector:pseudo-selector 
+		      - 가상 선택자의 종류
+		          o. visited: 방문했던 사이트. 브라우저의 방문 기록(history)에 저장된 사이트.
+		          o. link: 방문 기록이 없는 사이트.
+		          o. hover: 마우스가 요소 위에 있을 때(이벤트) 
+		          o. active: 마우스 버튼을 누르고 있을 때
+		          o. nth-child(arg): 조건을 만족하는 자식 요소(들)을 찾을 때.
+		          ...
+		  */
+		  
+		  /* 아이디가 link-naver인 a 태그 요소의 글자색을 설정하고, 밑줄을 삭제. */
+		  a#link-naver {
+		      color: black;
+		      text-decoration: none;
+		  } 
+		  
+		  /* 아이디가 link-naver인 a 태그 요소 위에 마우스가 위치했을 때 */
+		  a#link-naver:hover {
+		      color: blue;
+		      font-weight: bold;
+		  }
+		  
+		  /* 아이디가 link-naver인 태그 요소를 마우스 왼쪽 버튼으로 클릭하고 있을 때 */
+		  a#link-naver:active {
+		      color: red;
+		  }
+		  
+		  /* 아이디가 link-daum인 a 태그 요소의 스타일들을 설정 */
+		  a#link-daum {
+		      text-decoration: none;
+		      background-color: dodgerblue;
+		      color: white;
+		      font-weight: bold;
+		      padding: 4px 8px; /* padding-top, right, bottom, left (시계방향순) */
+		      width: 80px; /* inline이라 width를 변경할 수 없으나*/		      
+		      display: inline-block; /* display 특성이 block이거나 또는 inline-block이면 크기(가로/세로) 변경 가능 */
+		      text-align: center;
+		      border-radius: 4px; /* 테두리선 모서리의 반지름. 숫자가 클수록 곡선. */
+		  }
+		  /*
+		    CSS display property(특성):
+		    1. block
+		      - div, main, nav, section, ul, li, table, tr, ...
+		      - 이전 요소의 아래쪽에 배치.
+		      - width(가로), height(세로)를 변경할 수 있음.
+		      - margin, padding을 변경할 수 있음.
+		    2. inline
+		      - span, strong(강하게), em(강조), a, ...
+		      - 이전 요소의 오른쪽에 배치.
+		      - width, height를 변경할 수 없음!
+		      - margin, padding은 변경할 수 있음.
+		    3. inline-block
+		      - img, ...
+		      - inline 배치 특성: 이전 요소의 오른쪽에 배치.
+		      - block (크기) 특성: width, height를 변경할 수 있음.
+		    4. none: 화면에 배치(display)하지 않음. 요소가 차지하는 크기가 없음.
+		    
+		  */
+		  
+		  a#link-daum:hover {
+		      background-color: Slateblue;
+		  }
+		</style>
+	</head>
+	<body>
+		<nav>
+		  <a href="index.html">인덱스 페이지</a>
+		</nav>
+		<main>
+		  <h1>Pseudo Selector</h1>  
+		  <h2>링크 스타일</h2>
+		  
+		  <div>
+		      <a id="link-naver" href="https://www.naver.com">네이버</a>    
+		  </div>  
+		  <div>
+		      <a id="link-daum" href="https:///www.daum.net">다음</a>
+		  </div>
+		</main>
+	</body>
+</html>

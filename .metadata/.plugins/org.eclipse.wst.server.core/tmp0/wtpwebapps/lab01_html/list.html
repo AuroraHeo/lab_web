@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Lab01</title>
+	</head>
+	<body>
+		<a href="index.html">인덱스 페이지</a>
+		
+        <h1>HTML 리스트</h1>
+        
+        <h2>순서가 없는 리스트(unordered list; ul)</h2>
+            <ul style="list-style:circle;">
+                <!-- ul 태그의 style 속성 중에서 list-style의 기본값은 disc.
+                    list-style 특성 값을 none으로 설정하면 bullet이미지가 사라짐. -->
+                <!-- 리스트 아이템(list item; li) -->
+                <li>1승</li>
+                <li>모아나2</li>
+                <li>소방관</li>
+                <li>위키드</li>
+            </ul>
+            
+            <h2>중첩리스트</h2>
+            
+            <ul>
+                <li>
+                     한국영화
+                    <ul>
+                        <li>1승</li>
+                        <li>소방관</li>
+                    </ul>
+                </li>
+                <li>
+                    애니메이션
+                    <ul>
+                        <li>모아나</li>
+                        <li>위키드</li>
+                    </ul>    
+                </li>
+            </ul>
+            
+            <h2>순서가 있는 리스트(ordered list; ol)</h2>
+            <!-- ol 태그의 style 속성 중에서 list-style의 기본값은 decimal(숫자) -->
+            <ol style="list-style: decimal;">
+                <li>1승</li>
+                <li>모아나</li>
+                <li>소방관</li>
+                <li>위키드</li>
+            </ol>
+            
+            <h2>사전식 리스트(description list; dl)</h2>
+            <!-- 용어(term)(<dt>)와 정의/설명(definition)(<dd>)을 갖는 리스트 -->
+            <dl>
+                <dt>HTML</dt>
+                <dd>Hyper-Text Markup Language</dd>
+                <dd>웹 페이지의 정적인 컨텐츠를 작성하는 프론트엔드 개발 언어</dd>
+                
+                <dt>CSS</dt>
+                <dd>Cascading Style Sheet</dd>
+                <dd>웹 페이지의 스타일을 작성하는 프론트엔트 개발 언어</dd>
+                
+                <dt>JavaScript</dt>
+                <dd>ECMAScript(European Computer Manufacturer Association)</dd>
+                <dd>웹 페이지의 동적인 기능, 이벤트 처리 등을 담당하는 프론트엔드 개발 언어</dd>
+            </dl>
+	</body>
+</html>
+<!-- list-style: disc는 까만 원 모양. none은 아무것도 없음. circle은 빈 원 모양. decimal는 숫자 -->

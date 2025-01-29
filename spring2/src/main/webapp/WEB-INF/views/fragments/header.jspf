@@ -1,0 +1,53 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+
+<header class="mt-2 p-4 bg-primary text-white text-center">
+    <h1>${pageTitle}</h1>
+</header>
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary"> <!-- 부트스트랩에서 nav bar 검색하여 코드 복붙함 -->
+    <div class="container-fluid">
+        <c:url var="homePage" value="/" />
+        <a class="navbar-brand" href="${homePage}">Home</a>
+        <button class="navbar-toggler" type="button"
+            data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <c:url var="postListPage" value="/post/list" />
+                    <a class="nav-link active" href="${postListPage}">목록</a>
+                </li>
+                <li class="nav-item">
+                    <c:url var="postCreatePage" value="/post/create" />
+                    <a class="nav-link" href="${postCreatePage}">새글</a>
+                </li>
+                <%-- 세션에 로그인 사용자 정보가 없는 경우 --%>
+                <c:if test="${empty signedInUser}">
+                    <li class="nav-item">
+                        <c:url var="signInPage" value="/user/signin"/>
+                        <a class="nav-link" href="${ signInPage }">로그인</a>
+                    </li>
+                    <li class="nav-item">
+                        <c:url var="singUpPage" value="/user/signup"/>
+                        <a class="nav-link" href="${ singUpPage }">회원가입</a>
+                    </li>
+                </c:if>
+                
+                <!-- 세션에 로그인 사용자 정보가 있는 경우 -->
+                <c:if test="${ not empty signedInUser }">
+                <li>
+                    <c:url var="singOutPage" value="/user/signout"/>
+                    <a class="nav-link" href="${singOutPage}" >
+                        <span class="text-primary">${signedInUser}</span>로그아웃
+                    </a>
+                </li>
+                </c:if>
+            </ul>
+        </div>
+    </div>
+</nav>

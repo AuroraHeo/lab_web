@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="wizardPage">
+		<list key="groupId">
+			<item value="test"/>
+			<item value="com.itwill"/>
+		</list>
+		<list key="name">
+			<item value="JSP3"/>
+			<item value="Spring Project"/>
+			<item value="Spring MVC"/>
+			<item value="JSP2"/>
+			<item value="Servlet/JSP"/>
+		</list>
+		<list key="artifactId">
+			<item value="test"/>
+			<item value="jsp3"/>
+			<item value="spring2"/>
+			<item value="spring1"/>
+			<item value="jsp2"/>
+			<item value="jsp1"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.pom.overview">
+		<list key="ciManagementUrl">
+		</list>
+		<list key="ciManagementSystem">
+		</list>
+		<list key="issueManagementSystem">
+		</list>
+		<list key="issueManagementUrl">
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.pom.dependencies">
+	</section>
+</section>

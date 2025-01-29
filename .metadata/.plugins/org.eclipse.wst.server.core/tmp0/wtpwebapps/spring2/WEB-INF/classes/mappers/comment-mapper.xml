@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itwill.spring2.repository.CommentDao">
+
+    <!-- 특정 포스트에 달려있는 댓글 목록 검색에 사용할 메서드와 SQL 문장 -->
+    <select id="selectByPostId" resultType="Comment"> <!-- mybatis-config.xml에서 설정한 별명을 resultType로 -->
+        select * from comments where post_id = #{postId} order by id desc
+    </select>
+    
+    <!-- 해당 댓글 아이디의 댓글 1개 검색(selectById) -->
+    <select id="selectById" resultType="Comment">
+        select * from comments where id = #{id}
+    </select>
+    
+    <!-- 특정 포스트에 댓글 추가(등록)(insertComment) -->
+    <insert id="insertComment">
+        insert into comments (post_id, username, ctext, created_time, modified_time) values (#{postId}, #{username}, #{ctext}, systimestamp, systimestamp)
+    </insert>
+    
+    <!-- 댓글 아이디로 댓글 삭제(deleteById) -->
+    <delete id="deleteById">
+        delete from comments where id = #{id}
+    </delete>
+    
+    <!-- 특정 포스트에 달려있는 모든 댓글 삭제(deleteByPostId) -->
+    <delete id="deleteByPostId">
+        delete from comments where posts_id = #{postId}
+    </delete>
+    
+    <!-- 해당 댓글 아이디의 댓글 내용(텍스트)을 수정(updateComment) -->
+    <update id="updateComment">
+        update comments set ctext = #{ctext}, modified_time = systimestamp where id = #{id}
+    </update>
+    
+    <!-- 특정 포스트에 달려있는 댓글 갯수(selectCommentCount) -->
+    <select id="selectCommentCount" resultType="integer"> <!-- integer를 i를 소문자로 한것은 mybatis의 별명 타입을 가져옴. https://mybatis.org/mybatis-3/configuration.html#typealiases-->
+        select count(*) from comments where post_id = #{postId}
+    </select>
+</mapper>

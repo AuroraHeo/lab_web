@@ -1,0 +1,13 @@
+127.0.0.1 - - [23/Jan/2025:11:53:32 +0900] "GET / HTTP/1.1" 404 807
+0:0:0:0:0:0:0:1 - - [23/Jan/2025:11:53:33 +0900] "GET /spring2/ HTTP/1.1" 200 2639
+0:0:0:0:0:0:0:1 - - [23/Jan/2025:11:53:36 +0900] "GET /spring2/post/create;jsessionid=F95A9854E6E44BC6B0E022E05A0473FE HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [23/Jan/2025:11:53:36 +0900] "GET /spring2/user/signin?target=http%3A%2F%2Flocalhost%3A8080%2Fspring2%2Fpost%2Fcreate%3Bjsessionid%3DF95A9854E6E44BC6B0E022E05A0473FE HTTP/1.1" 200 3317
+0:0:0:0:0:0:0:1 - - [23/Jan/2025:11:53:48 +0900] "POST /spring2/user/signin?target=http%3A%2F%2Flocalhost%3A8080%2Fspring2%2Fpost%2Fcreate%3Bjsessionid%3DF95A9854E6E44BC6B0E022E05A0473FE HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [23/Jan/2025:11:53:48 +0900] "GET /spring2/post/create;jsessionid=F95A9854E6E44BC6B0E022E05A0473FE HTTP/1.1" 200 3692
+0:0:0:0:0:0:0:1 - - [23/Jan/2025:11:54:40 +0900] "GET /spring2/ HTTP/1.1" 200 2326
+0:0:0:0:0:0:0:1 - - [23/Jan/2025:11:54:41 +0900] "GET /spring2/post/list HTTP/1.1" 200 11363
+0:0:0:0:0:0:0:1 - - [23/Jan/2025:11:54:44 +0900] "GET /spring2/post/details?id=142 HTTP/1.1" 200 8662
+0:0:0:0:0:0:0:1 - - [23/Jan/2025:11:54:44 +0900] "GET /spring2/post/details?id=142 HTTP/1.1" 200 8662
+0:0:0:0:0:0:0:1 - - [23/Jan/2025:11:54:44 +0900] "GET /spring2/post/details?id=142 HTTP/1.1" 200 8662
+0:0:0:0:0:0:0:1 - - [23/Jan/2025:11:54:45 +0900] "GET /spring2/js/comments.js HTTP/1.1" 200 12559
+0:0:0:0:0:0:0:1 - - [23/Jan/2025:11:54:49 +0900] "GET /spring2/post/create HTTP/1.1" 200 3692

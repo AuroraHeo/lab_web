@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>lab02 CSS</title>
+		
+		<!-- 외부 CSS 파일 링크 -->
+		<link rel="stylesheet" href="css/mystyle.css"/>
+		
+		<!-- 내부 CSS 작성 -->
+		<style>
+		  div {
+		      border: 2px dotted red;
+		  }
+		</style>
+		<!-- 외부 CSS를 작성한 다음에 내부 CSS를 작성한 경우에는 나중에 설정된 값이 적용됨. -->
+	</head>
+	<body>
+		<main> <!-- 웹 페이지의 주요 영역(main division)이라는 의미를 갖는 태그. div의 한 종류 -->
+		  <section> <!-- 웹 페이지의 섹션 영역(section division)이라는 의미를 갖는 태그. div의 한 종류 -->
+		      <h1>CSS</h1>
+		      <h2>Cascading Style Sheet</h2>
+		      
+		      <div>Division 1</div>
+		      <div>Division 2</div>
+		      <div style="border: 1px dashed darkgreen;">Division 3</div>
+		  </section>
+		      <h2>목차</h2>
+		      <ul>
+		          <li>
+		              <a href="selector1.html">선택자 1</a>
+		          </li>
+		          <li>
+		              <a href="selector2.html">선택자 2</a>
+		          </li>
+		          <li>
+		              <a href="link.html">가상 선택자</a>
+		          </li>
+		          <li>
+		              <a href="table.html">테이블</a>
+		          </li>
+		          <li>
+		              <a href="example.html">CSS example</a>
+		          </li>
+		          <li>
+		              <a href="bootstrap.html">Bootstrap 설정</a>
+		          </li>
+		      </ul>
+		</main>
+	</body>
+</html>
+
+<!-- 
+Front-End 개발 언어:
+1. HTML: 웹 페이지의 정적 컨텐트(링크, 이미지, 테이블, 폼, 리스트 ...)들을 작성하는 언어.
+2. CSS: 웹 페이지의 스타일(요소 배치, 색상, 모양, 테두리선, 크기, ...)들을 작성하는 언어.
+3. JavaScript: 웹 페이지의 동적 변화, 이벤트 처리, 서버와 통신 등과 같은 기능을 구현하는 언어.
+    전통적으로는 '브라우저(웹 서버X)에서 실행되는' 프로그래밍 언어였음. (지금은 웹서버에서도 실행이 될 수 있게 되었..?..)
+
+CSS를 적용하는 방법:
+1. 외부(external) CSS: 별도의 CSS파일에서 작성된 내용을 html 파일에서 링크해서 사용.
+2. 내부(internal) CSS: html 파일의 <script> 태그 안에서 스타일을 작성.
+    ex><style>
+          table, th, td {
+              border: 2px solid darkgray;
+              border-collapse: collapse;
+          }
+        </style>
+3. inline CSS: 각각의 html 태그 요소 안에서 style 속성(attribute)값을 작성.
+     ex)<div style="border: 2px solid black; margin: 16px; padding: 16px; width: 160px; height: 80px;">Division 1</div>
+-->

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move package &apos;com.itwill.jsp2.web&apos; to &apos;lab05_jsp/src/main/java&apos;&#x0D;&#x0A;- Original project: &apos;lab04_jsp&apos;&#x0D;&#x0A;- Destination element: &apos;lab05_jsp/src/main/java&apos;&#x0D;&#x0A;- Original element: &apos;lab04_jsp/src/main/java/com.itwill.jsp2.web&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move package" destination="=lab05_jsp/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/" element1="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.itwill.jsp2.web" flags="589830" fragments="1" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.movePackages" stamp="1736209587857" version="1.0"/>
+</session>

@@ -1,0 +1,14 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title>JSP</title>
+	</head>
+	<body>
+		<nav>
+            <a href="/jsp1/">목차</a> //리다이렉트가 발생하지 않으려면 끝에 / 필수!
+        </nav>
+	</body>
+</html>

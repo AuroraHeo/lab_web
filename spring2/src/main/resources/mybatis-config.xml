@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- 영속성 프레임워크(Persistence Framework) Mybatis의 환경 설정 파일 -->
+    <settings>
+        <setting name="mapUnderscoreToCamelCase" value="true"/> <!-- 는 MyBatis 설정에서 사용되는 속성으로, 데이터베이스 컬럼 이름이 언더스코어(_)로 구분된 경우 이를 카멜 케이스(CamelCase)로 자동 변환해주는 기능을 제공 -->
+    </settings>
+
+    <typeAliases>
+        <typeAlias type="com.itwill.spring2.domain.Post" alias="Post" /> <!-- com.itwill.spring2.domain.Post클래스를 Post라는 별명으로 정의 -->
+        <typeAlias type="com.itwill.spring2.domain.Comment" alias="Comment" />
+        <typeAlias type="com.itwill.spring2.domain.Member" alias="Member" />
+    </typeAliases>
+    
+</configuration>
+
+
+<!-- https://mybatis.org/mybatis-3/getting-started.html에서 <!DOCTYPE configuration을 복붙하고 작업-->
+<!-- 영속성 프레임워크(Persistence Framework) Mybatis의 환경 설정  -->

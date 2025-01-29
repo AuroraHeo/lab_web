@@ -1,0 +1,25 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+<%-- jsp 주석 
+1. Servlet(Server + Applet): WAS에서 실행되는, 요청/응답을 처리하는 작은 자바 앱.
+    (1) 서블릿 객체의 생성과 관리, 서블릿 객체 메서드 호출은 WAS의 서블릿 컨테이너가 담당.
+    (2) 서블릿의 동작 원리: 
+        o. 최초 요청 --> 서블릿 객체 생성 --> 메서드(doGet, doPost) 호출 --> 응답
+        o. 요청 --> 생성되어져 있는 서블릿 객체의 메서드 호출 --> 응답  
+--%>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title>JSP</title>
+	</head>
+	<body>
+		<nav>
+            <a href="/jsp1/">목차</a> 
+        </nav>
+        <main>
+            <h1>jsp 소개</h1>
+        </main>
+	</body>
+</html>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration xmlns="https://logging.apache.org/xml/ns"
+    xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://logging.apache.org/xml/ns https://logging.apache.org/xml/ns/log4j-config-2.xsd">
+    <!-- Log4j 라이브러리의 환경 설정 파일. -->
+    <Appenders>
+        <!-- 로그를 출력/저장하는 위치(방법): Console, File -->
+        <Console name="CONSOLE" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yy-MM-dd HH:mm:ss.SSS} %-5p [%40.40c(%3L)] %m%n"/>
+            <!-- 
+                로그 패턴 
+                o. %d, %date: 로그 출력 날짜/시간.
+                o. %p, %level: 로그 레벨(심각성)(priority). trace < debug < info < warn < error < fatal
+                o. %c, %logger: 로그 출력 객체(class)
+                o. %m, %message: 로그 메세지
+                o. %n: 줄바꿈(new line)
+                o. %L, %line: 로그를 출력하는 소스 코드의 줄 번호. ex)HomeController.java의 og.info("doGet()");가 36번째 줄인 것을 알 수 있음.
+                o. - : 왼쪽으로 붙여서 정렬. (-가 없으면 오른쪽으로 붙여서 정렬.)
+
+            -->
+        </Console>
+    </Appenders>
+    
+    <Loggers>
+        <!-- 로그를 출력/저장할 모듈(패키지), 로그 레벨 설정 -->
+        <Root level="DEBUG" additivity="false"> <!-- DEBUG 이상의 레벨의 로그만 출력 -->
+            <AppenderRef ref="CONSOLE" />
+        </Root>
+        <Logger name="com.zaxxer.hikari" level="info" additivity="false">
+            <AppenderRef ref="CONSOLE"/>
+        </Logger>
+    </Loggers>
+</Configuration>
+
+<!-- spring1에서 복붙함 -->

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context" 
+    xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
+        http://mybatis.org/schema/mybatis-spring https://mybatis.org/schema/mybatis-spring.xsd">
+
+    <!-- bean definitions here:
+        스프링 프레임워크가 생성하고 관리할 자바 객체들을 선언. i), ii), iii) -->
+        
+    <!-- i) HikariConfig 빈(bean) 생성을 위한 설정
+        HikariConfig hikariConfig = new HikariConfig(); //기본생성자 호출
+        hikariConfig.setDriverClassName("oracle.jdbc.OracleDriver"); // setter 호출
+        ...-->
+    <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig"> <!--기본생성자 호출 -->
+        <property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
+        <property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+        <property name="username" value="jspstudy"/>
+        <property name="password" value="jspstudy"/>
+    </bean>
+    
+    <!-- ii) HikariDataSource 빈(bean) 생성을 위한 설정
+        HikariDataSource ds = new HikariDataSource(hikariConfig);-->
+    <bean id="ds" class="com.zaxxer.hikari.HikariDataSource"> <!-- 커넥션 풀을 생성...?..? -->
+        <constructor-arg ref="hikariConfig"/> <!-- ref: 객체를 찾을 수 있는 id -->
+    </bean>
+
+    <!-- iii) SqlSessionFactoryBean 빈(bean) 생성을 위한 설정
+        영속성 프레임워크인 MyBatis에서 데이터 소스(커넥션 풀)을 이용해서 SQL 문장을 실행하고,
+        그 결과를 처리해서 리턴할 수 있는 객체.
+        SqlSessionFactoryBean sqlSession = new SqlSessionFactoryBean();
+        SqlSession.setDataSource(ds);
+        SqlSession.setMapperLocations("classpath:/mappers/**/*.xml");
+        SqlSession.setConfigLocation("classpath:/mybatis-config.xml");
+    -->
+    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean"> <!--기본생성자 호출 : 인터페이스의 메서드의 바디에 주입될 객체 생성 -->
+        <property name="dataSource" ref="ds"/> <!-- name은 SqlSessionFactoryBean클래스의 필드이름이라서 이 name으로 setter를 만들기 때문에 오타 있으면 안됨 -->
+        <property name="mapperLocations" value="classpath*:mappers/**/*.xml"/>
+        <property name="configLocation" value="classpath:mybatis-config.xml"/> <!-- src/main/resources/mybatis-config.xml -->
+    </bean>
+    
+    <!-- MyBatis-Spring 프레임워크에서 SQL을 수행하고 결과처리하는 컴포넌트들을 검색할 기본 패키지 설정.
+    'MyBatis' 프레임워크는 base-package 아래의 '인터페이스(들)을 검색하여 구현하여' '객체를 생성'(하여 힙 메모리에 저장).(개발자는 메서드의 바디를 구현할 필요 없음.)
+    -->
+    <mybatis:scan base-package="com.itwill.spring2.repository"/> <!-- mybatis가 com.itwill.spring2.repository패키지 아래의 인터페이스를 찾아서 구현클래스(객체)를 만들어줌(base-package에 인터페이스가 존재하는 패키지 이름을 넣으면 됨) -->
+    
+    <!-- 스프링 컨테이너에서 컴포넌트 빈(bean)들을 검새할 기본 패키지를 설정.
+        스프링 컨테이너가 base-package와 그 하위 패키지들을 검색해서 컴포넌트 애너테이션(@Component, @Service, ...)
+        이 설정된 클래스 객체들을 (싱글턴으로) 생성하고 관리하기 위해서.
+        생성된 컴포넌트 빈(bean)들을 필요한 곳(예:컨트롤러)에 주입할 수 있도록. -->
+    <context:component-scan base-package="com.itwill.spring2.service"/>
+</beans>
+
+<!-- spring1에서 복붙함 -->
+<!--3. application-context.xml : 스프링 container가 생성하고 관리할 자바 객체(주입할 객체)들을 선언. listener가 이걸 읽음. -->
