@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Spring Boot 1</title>
+	</head>
+	<body>
+        <!-- thymeleaf fragment expressions: replace
+            src/main/resources/templates/layout/header.html파일에서 선언된 myHeader 프래그먼트를 replace(교체) 방식으로 끼워넣기.
+            div 태그 대신에 프래그먼트의 태그(header)로 교체됨.
+         -->
+        <div th:replace="~{/layout/header :: myHeader('인덱스페이지')}"></div>
+        
+        <!-- thymeleaf fragment expressions: insert
+            /layout/header.html파일에서 선언된 navigation 플래그먼트를 insert(삽입)방식으로 끼워넣기.
+            div 태그 안에 프래그먼트의 nav태그가 삽입되는 방식.
+         -->
+         <div th:insert="~{/layout/header :: navigation}"></div>
+        
+		<h1>첫번째 스프링 부트 프로젝트</h1>
+        <!-- thymeleaf variable expressions -->
+        <h2 th:text="${currentTime}">현재 시간</h2>
+        <h3 th:text="${book}"></h3>
+        
+        <div>
+            ID: <span th:text="${book.id}"></span>
+            <br>
+            제목: <span th:text="${book.title}"></span>
+            <br>
+            저자: <span th:text="|${book.author.lastName} ${book.author.firstName}|"></span>
+            <br>
+        </div>
+        
+        <div th:object="${book}">
+            <!-- thymeleaf selection expressions -->
+            ID : <span th:text="*{id}"></span>
+            <br>
+            TITLE: <span th:text="*{title}"></span>
+            <br>
+            AUTHOR: <span th:text="|*{author.lastName} *{author.firstName}|"></span>
+            <br>
+        </div>
+        
+        <ul>
+            <li>
+                <!-- thymeleaf link(URL) expressions ;JSTL(ex)c:url)과 비슷한 기능 
+                CSS <link rel="stylesheet" th:href="@{}"
+                JS <script th:src="@{}"
+                <img th:src="@{}"
+                <form th:action="@{}" -->
+                <a th:href="@{/book/list}">도서 목록</a>
+            </li>
+                <!-- thymeleaf link expressions에서 질의문자열(query string)을 작성하는 방법 -->
+                <!--<a href="/book/details?id=1">도서1 상세 페이지</a>-->
+                <a th:href="@{/book/details(id=1)}">도서1 상세 페이지</a> <!-- details?id=1 -->
+            </li>
+            <li>
+                <!-- thymeleaf link expressions에서 경로 변수(path variable)을 작성하는 방법 -->
+                <!-- <a href="/book/details/2 (2부분에 숫자가 변하게!!!!!!!)">도서2 상세 페이지</a> -->
+                <a th:href="@{/book/details/{id}(id=2)}">도서2 상세 페이지</a>
+            </li>
+        </ul>
+	</body>
+</html>
